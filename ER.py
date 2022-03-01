@@ -1,7 +1,4 @@
 import networkx as nx
-import numpy as np
-
-# import matplotlib.pyplot as plt
 from random import random
 
 
@@ -10,8 +7,8 @@ class ErdosRenyi:
         """Initializes an Erdos-Renyi graph
 
         Args:
-            n (int): Number of nodes in the graph
-            p (float): Probability of connection between any two nodes
+        n (int): Number of nodes in the graph
+        p (float): Probability of connection between any two nodes
         """
         self.G = nx.Graph()
         self.n = n
@@ -24,35 +21,26 @@ class ErdosRenyi:
                 if random() < self.p:
                     self.G.add_edge(i, j)
 
-    def get_clustering_coefficient(self, nodes=None):
-        """Calculates clustering coefficient in graph G
-
-        Args:
-            nodes: Nodes of graph G. Defaults to None.
+    def average_clustering_coefficient(self):
+        """Calculates average clustering coefficient of the graph G
 
         Returns:
-            Returns the clustering coefficient of the given nodes, if none then returns their average
+        Returns the average clustering coefficient
         """
-        return nx.algorithms.cluster.clustering(G, nodes)
+        return nx.algorithms.cluster.average_clustering(self.G)
 
-    def get_average_path_length(self):
+    def average_path_length(self):
         """Calculates average path length of the graph G
 
         Returns:
-            float: Average path length in graph G
+        float: Average path length in graph G
         """
         return nx.average_shortest_path_length(self.G)
 
-    def get_degree_distribution(self):
-        degrees = list(self.G.degree(range(self.n)))
-        max_degree = max(degrees, key=lambda x: x[1])[1]
-        histogram = np.zeros(max_degree)
+    def degrees(self):
+        """Returns degree of all vertices in the graph
 
-        for node, degree in degrees:
-            histogram[degree] += 1
-        return histogram
-
-
-G = ErdosRenyi(7000000, 0.01)
-print(f"Average Clustering Coefficient: {G.get_clustering_coefficient()}")
-print(f"Average Path Length: {G.get_average_path_length()}")
+        Returns:
+            [int]: array of degrees of vertices
+        """
+        return list(map(lambda x: x[1], self.G.degree(range(self.n))))
