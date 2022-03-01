@@ -9,7 +9,7 @@ from random import random
 
 </div>
 
-<div class="cell code" data-execution_count="2" id="eWPeYK4MlYze">
+<div class="cell code" data-execution_count="4" id="eWPeYK4MlYze">
 
 ``` python
 class ErdosRenyi:
@@ -58,7 +58,7 @@ class ErdosRenyi:
 
 </div>
 
-<div class="cell code" data-execution_count="3" data-colab="{&quot;height&quot;:1000,&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}" id="JtmLCFzRsBxO" data-outputId="09a70984-f16f-478d-850b-ba24c0a00974">
+<div class="cell code" data-execution_count="5" data-colab="{&quot;height&quot;:1000,&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}" id="JtmLCFzRsBxO" data-outputId="3ec6781c-05f0-474f-ca57-e956d29372ec">
 
 ``` python
 CONFIGURATIONS = [(100, 0.05), (500, 0.02), (1000, 0.01)]
@@ -87,6 +87,8 @@ for n, p in CONFIGURATIONS:
 
     prediction_average_path_lenght = np.log(n) / np.log((n - 1) * p)
 
+    print(f"n: {n}")
+    print(f"p: {p}")
     print(
         f"Average Clustering Coefficient (prediction = {p}): {round(s_average_clustering_coefficient, 4)}"
     )
@@ -111,8 +113,10 @@ for n, p in CONFIGURATIONS:
 
 <div class="output stream stdout">
 
-    Average Clustering Coefficient (prediction = 0.05): 0.0444
-    Average Path Length (prediction = 2.8793): 3.0235084175084173
+    n: 100
+    p: 0.05
+    Average Clustering Coefficient (prediction = 0.05): 0.0482
+    Average Path Length (prediction = 2.8793): 3.006141414141415
 
 </div>
 
@@ -128,8 +132,10 @@ for n, p in CONFIGURATIONS:
 
 
 
-Average Clustering Coefficient (prediction = 0.02): 0.0203
-Average Path Length (prediction = 2.7013): 2.9480422177688714
+n: 500
+p: 0.02
+Average Clustering Coefficient (prediction = 0.02): 0.0198
+Average Path Length (prediction = 2.7013): 2.9427783567134265
 ```
 
 </div>
@@ -146,8 +152,10 @@ Average Path Length (prediction = 2.7013): 2.9480422177688714
 
 
 
-Average Clustering Coefficient (prediction = 0.01): 0.0099
-Average Path Length (prediction = 3.0013): 3.26775001668335
+n: 1000
+p: 0.01
+Average Clustering Coefficient (prediction = 0.01): 0.0103
+Average Path Length (prediction = 3.0013): 3.259943810477144
 ```
 
 </div>
@@ -155,16 +163,6 @@ Average Path Length (prediction = 3.0013): 3.26775001668335
 <div class="output display_data">
 
 ![](./images/graph3.png)
-
-</div>
-
-<div class="output stream stdout">
-
-``` 
-
-
-
-```
 
 </div>
 
